@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+  <title>Space Invaders</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="game.js"></script>
+  <script src="drawing.js"></script>
+  <script src="objects.js"></script>
+</head>
+<body>
+  <h1>Space Invaders</h1>
+  <h4>By David Ofosu</h4>
+  <canvas id="canvas" width="628" height="600" tabindex="1"></canvas>
+  <script>
+  var game = new SpaceInvaders(document.getElementById("canvas"));
+
+  function frame(timestamp) {
+    game.frame(timestamp);
+    window.requestAnimationFrame(frame);
+  }
+
+  game.canvas.addEventListener("keydown", function(e) {
+    game.key_handler(e, true);
+  });
+  game.canvas.addEventListener("keyup", function(e) {
+    game.key_handler(e, false);
+  });
+
+  window.requestAnimationFrame(frame);
+  </script>
+</body>
+</html>
